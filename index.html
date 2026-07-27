@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>阳光农场 · 作业大作战</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="阳光农场">
+<style>
+  :root{
+    --sky:#bfe9ff; --sky2:#e8f7ff;
+    --grass:#8fd14f; --grass2:#6fb83a; --grass-d:#4f9a28;
+    --soil:#caa472; --soil-d:#a9824f;
+    --sun:#ffd23f; --sun-d:#f4a600;
+    --panel:#fffdf5; --panel2:#fff7e0;
+    --ink:#3a2e1a; --ink2:#6b5a3e;
+    --line:#e4d3a8; --done:#9ed16b;
+    --mon:#ff9a3c; --pink:#ff7eb6;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;min-height:100%}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Comic Sans MS",sans-serif;
+    background:
+      linear-gradient(180deg,var(--sky) 0%,var(--sky2) 30%,var(--grass) 30%,var(--grass2) 100%);
+    background-attachment:fixed;
+    color:var(--ink); overflow-x:hidden;
+  }
+  /* 云朵装饰 */
+  .cloud{position:fixed;top:0;z-index:0;opacity:.9;pointer-events:none;font-size:46px}
+  .c1{left:8%;animation:drift 26s linear infinite}
+  .c2{left:55%;top:30px;font-size:34px;animation:drift 34s linear infinite}
+  @keyframes drift{from{transform:translateX(-20px)}to{transform:translateX(40px)}}
+
+  header{position:relative;z-index:2;text-align:center;padding:20px 16px 6px}
+  .logo{font-size:27px;font-weight:900;color:var(--ink);text-shadow:2px 2px 0 #fff,4px 4px 0 rgba(0,0,0,.08)}
+  .logo .sun-ic{font-size:30px;vertical-align:-3px}
+  .sub{color:var(--ink2);font-size:13px;margin-top:5px;font-weight:600}
+
+  /* 顶部 HUD */
+  .hud{position:relative;z-index:2;max-width:920px;margin:12px auto;padding:0 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .stat{background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:10px 18px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.08);min-width:110px}
+  .stat .k{font-size:12px;color:var(--ink2);font-weight:700}
+  .stat .v{font-size:24px;font-weight:900;margin-top:2px;display:flex;align-items:center;gap:5px;justify-content:center}
+  .stat .v svg{width:22px;height:22px}
+  .stat.sun .v{color:var(--sun-d)}
+  .stat.beat .v{color:var(--mon)}
+  .stat.lv .v{color:var(--grass-d)}
+
+  nav{position:relative;z-index:2;display:flex;gap:10px;justify-content:center;margin:16px auto 6px;flex-wrap:wrap;padding:0 12px}
+  nav button{background:var(--panel);color:var(--ink2);border:3px solid var(--line);border-radius:22px;padding:9px 18px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.08);transition:.15s}
+  nav button.active{color:#fff;background:var(--grass-d);border-color:var(--grass-d);box-shadow:0 3px 0 var(--grass-d)}
+  nav button:active{transform:translateY(2px);box-shadow:none}
+
+  main{position:relative;z-index:2;max-width:920px;margin:0 auto;padding:10px 14px 90px}
+
+  /* 横向表格 */
+  .board{background:var(--panel);border:4px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.08)}
+  .row{display:grid;grid-template-columns:1.6fr 1fr 1fr;border-bottom:3px dashed var(--line)}
+  .row:last-child{border-bottom:none}
+  .row.head{background:var(--panel2);font-weight:900;color:var(--ink2);font-size:13px}
+  .row.head .cell{padding:11px 12px}
+  .cell{padding:14px 12px;display:flex;flex-direction:column;justify-content:center;border-right:3px dashed var(--line)}
+  .cell:last-child{border-right:none}
+
+  /* 第1列 事项 */
+  .col-task .subj{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:900;margin-bottom:8px}
+  .col-task .subj .badge{font-size:13px;background:var(--grass);color:#fff;border-radius:10px;padding:2px 9px;font-weight:800}
+  .items{display:flex;flex-direction:column;gap:6px}
+  .item{display:flex;align-items:center;gap:8px;background:var(--panel2);border:2px solid var(--line);border-radius:12px;padding:7px 10px;cursor:pointer;transition:.12s;font-size:14px;font-weight:700}
+  .item:hover{transform:translateX(3px);border-color:var(--grass)}
+  .item .chk{width:20px;height:20px;border-radius:50%;border:2px solid var(--grass-d);flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+  .item.done{opacity:.6}
+  .item.done .chk{background:var(--done);border-color:var(--done)}
+  .item.done .nm{text-decoration:line-through}
+
+  /* 第2列 怪兽 */
+  .col-mon{align-items:center;text-align:center}
+  .mon-row{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+  .mon{width:34px;height:34px}
+  .mon.left{filter:drop-shadow(1px 2px 0 rgba(0,0,0,.12))}
+  .mon.beat{opacity:.35;filter:grayscale(1)}
+  .mon-left-txt{font-size:13px;font-weight:800;color:var(--mon)}
+  .mon-left-txt b{font-size:18px}
+
+  /* 第3列 阳光 */
+  .col-sun{align-items:center;text-align:center}
+  .sun-num{display:flex;align-items:center;gap:6px;font-size:22px;font-weight:900;color:var(--sun-d)}
+  .sun-num svg{width:26px;height:26px}
+  .sun-bar{width:100%;height:9px;background:var(--panel2);border-radius:6px;margin-top:8px;overflow:hidden;border:1px solid var(--line)}
+  .sun-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sun),var(--sun-d));transition:width .4s}
+
+  /* 图鉴/升级页 */
+  .garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:12px;margin-top:12px}
+  .plant{background:var(--panel);border:3px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)}
+  .plant .ic{width:48px;height:48px;margin:0 auto}
+  .plant .pn{font-size:12px;margin-top:6px;font-weight:800}
+  .plant.evo{border-color:var(--sun-d);box-shadow:0 4px 0 var(--sun)}
+  .plant.evo .pn{color:var(--sun-d)}
+  .empty{color:var(--ink2);text-align:center;padding:30px;font-weight:700}
+
+  .evo-track{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:10px 0 16px;justify-content:center}
+  .evo-track .node{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--ink2);font-weight:700}
+  .evo-track .node b{font-size:30px}
+  .evo-track .arrow{color:var(--grass-d);font-weight:900}
+
+  /* 浮动按钮 */
+  .fab{position:fixed;z-index:5;bottom:16px;right:16px;display:flex;gap:10px}
+  .fab button{width:54px;height:54px;border-radius:50%;border:3px solid #fff;font-size:24px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.18);transition:.12s}
+  .fab button:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+  .fab .sync{background:var(--sun);color:var(--sun-d)}
+  .fab .reset{background:var(--pink);color:#fff;font-size:18px}
+
+  /* 战斗弹窗 */
+  .overlay{position:fixed;inset:0;z-index:20;background:rgba(40,30,10,.55);display:none;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+  .overlay.show{display:flex;animation:fade .25s}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .battle{width:min(340px,90vw);background:var(--panel);border:4px solid var(--line);border-radius:24px;padding:22px 20px;text-align:center;box-shadow:0 8px 0 rgba(0,0,0,.15)}
+  .battle h3{margin:0 0 2px;font-size:18px;font-weight:900;color:var(--ink)}
+  .boss{margin:8px auto;width:96px;height:96px;animation:boss .5s infinite alternate}
+  @keyframes boss{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-9px) rotate(3deg)}}
+  .hpwrap{height:16px;background:var(--panel2);border:2px solid var(--line);border-radius:10px;overflow:hidden;margin:10px 0}
+  .hp{height:100%;background:linear-gradient(90deg,#ff6b6b,var(--sun));transition:width .15s linear}
+  .hit{font-size:14px;color:var(--ink2);min-height:20px;font-weight:700}
+  .btn-big{margin-top:14px;width:100%;padding:14px;border:none;border-radius:16px;font-size:17px;font-weight:900;color:#fff;background:var(--grass-d);cursor:pointer;box-shadow:0 4px 0 var(--grass)}
+  .btn-big:active{transform:translateY(3px);box-shadow:0 1px 0 var(--grass)}
+  .btn-big:disabled{opacity:.5;box-shadow:none}
+
+  /* 奖励弹窗 */
+  .reward{margin:6px auto;width:84px;height:84px;animation:pop .5s}
+  @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+  .r-label{font-size:15px;color:var(--mon);font-weight:900}
+  .evo-flash{color:var(--sun-d);font-weight:900;margin-top:8px;font-size:14px}
+
+  /* 同步弹窗 */
+  .modal{width:min(380px,90vw);background:var(--panel);border:4px solid var(--line);border-radius:24px;padding:22px}
+  .modal h3{margin:0 0 12px;font-size:18px;font-weight:900}
+  .modal textarea{width:100%;height:110px;background:#fffdf5;border:2px solid var(--line);border-radius:12px;color:var(--ink);padding:10px;font-size:12px;font-family:monospace;resize:none}
+  .modal .row{display:flex;gap:10px;margin-top:12px}
+  .modal .row button{flex:1;padding:12px;border:none;border-radius:14px;font-weight:900;cursor:pointer;font-size:14px;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+  .modal .row button:active{transform:translateY(3px);box-shadow:none}
+  .btn-p{background:var(--grass-d);color:#fff}
+  .btn-g{background:var(--panel2);color:var(--ink2);border:2px solid var(--line)!important}
+  .modal .tip{font-size:11px;color:var(--ink2);margin-top:8px;line-height:1.6;font-weight:600}
+
+  .toast{position:fixed;z-index:30;left:50%;top:18px;transform:translateX(-50%);background:var(--grass-d);color:#fff;padding:10px 18px;border-radius:22px;font-weight:800;font-size:13px;opacity:0;transition:.3s;pointer-events:none;box-shadow:0 4px 0 rgba(0,0,0,.15)}
+  .toast.show{opacity:1;top:28px}
+
+  @media(max-width:560px){
+    .row{grid-template-columns:1.4fr 1fr 1fr}
+    .col-task .subj{font-size:15px}
+    .item{font-size:13px}
+  }
+
+  /* 安装引导弹窗 */
+  .install-tip{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:25;width:min(340px,92vw);
+    background:var(--panel);border:4px solid var(--sun-d);border-radius:18px;padding:14px 16px;box-shadow:0 8px 0 rgba(0,0,0,.15);display:none}
+  .install-tip.show{display:block;animation:fade .3s}
+  .install-tip h4{margin:0 0 6px;font-size:15px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:6px}
+  .install-tip p{margin:4px 0;font-size:12.5px;line-height:1.6;color:var(--ink2);font-weight:600}
+  .install-tip .step{background:var(--panel2);border:2px solid var(--line);border-radius:10px;padding:7px 9px;margin:6px 0}
+  .install-tip b{color:var(--grass-d)}
+  .install-tip .closex{position:absolute;top:8px;right:10px;font-size:18px;color:var(--ink2);cursor:pointer;font-weight:900}
+  .install-tip .okbtn{margin-top:8px;width:100%;padding:10px;border:none;border-radius:12px;font-weight:900;font-size:14px;color:#fff;background:var(--grass-d);box-shadow:0 3px 0 var(--grass);cursor:pointer}
+  .install-tip .okbtn:active{transform:translateY(2px);box-shadow:none}
+
+  /* 家长编辑模式 */
+  .item.edit{background:var(--panel2);border:2px dashed var(--grass);padding:5px 8px;gap:6px}
+  .nm-input,.subj-input{border:2px solid var(--line);border-radius:8px;padding:5px 7px;font-size:13px;font-weight:700;font-family:inherit;color:var(--ink);background:#fff;flex:1;min-width:0;width:100%}
+  .subj-input{font-size:15px}
+  .mini-del{border:none;background:transparent;font-size:14px;cursor:pointer;padding:2px 4px;flex:none}
+  .add-btn{margin-top:8px;border:2px dashed var(--grass);background:rgba(143,209,79,.15);color:var(--grass-d);border-radius:12px;padding:7px 10px;font-size:13px;font-weight:800;cursor:pointer;width:100%}
+  .add-btn.big{padding:12px;font-size:15px}
+  .reset-default{margin-top:10px;width:100%;border:2px solid var(--line);background:var(--panel2);color:var(--ink2);border-radius:12px;padding:9px;font-size:13px;font-weight:700;cursor:pointer}
+  nav button.on{background:var(--sun-d);border-color:var(--sun-d);color:#fff;box-shadow:0 3px 0 var(--sun)}
+  .edit-hint{background:var(--sun);color:var(--sun-d);text-align:center;font-weight:800;font-size:13px;padding:8px;border-radius:12px;margin:0 14px 10px}
+</style>
+</head>
+<body>
+<div class="cloud c1">☁️</div>
+<div class="cloud c2">☁️</div>
+
+<header>
+  <div class="logo"><span class="sun-ic">🌞</span> 阳光农场 · 作业大作战</div>
+  <div class="sub">写完作业打跑小怪兽，收集阳光，把农场种成美丽花园！</div>
+</header>
+
+<div class="hud">
+  <div class="stat beat"><div class="k">打败怪兽</div><div class="v"><span id="s-beat">0</span> 只</div></div>
+  <div class="stat sun"><div class="k">阳光总数</div><div class="v"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#ffd23f" stroke="#f4a600" stroke-width="1.5"/><g stroke="#f4a600" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.6" y2="6.6"/><line x1="17.4" y1="17.4" x2="19.5" y2="19.5"/><line x1="19.5" y1="4.5" x2="17.4" y2="6.6"/><line x1="6.6" y1="17.4" x2="4.5" y2="19.5"/></g></svg><span id="s-sun">0</span></div></div>
+  <div class="stat lv"><div class="k">农场等级</div><div class="v">Lv.<span id="s-lv">1</span></div></div>
+  <div class="stat beat"><div class="k">连续打卡</div><div class="v">🔥 <span id="s-streak">0</span> 天</div></div>
+</div>
+
+<nav id="nav">
+  <button data-tab="home" class="active">🌻 作业农场</button>
+  <button data-tab="garden">🌱 植物图鉴</button>
+  <button data-tab="evo">✨ 升级花园</button>
+  <button id="btn-edit">✏️ 家长编辑</button>
+</nav>
+
+<main>
+  <div id="tab-home"></div>
+  <div id="tab-garden" style="display:none"></div>
+  <div id="tab-evo" style="display:none"></div>
+</main>
+
+<div class="fab">
+  <button class="reset" id="btn-reset" title="重置进度">🗑️</button>
+  <button class="sync" id="btn-sync" title="存档同步">🔄</button>
+</div>
+
+<!-- 战斗弹窗 -->
+<div class="overlay" id="ov-battle">
+  <div class="battle">
+    <h3 id="b-title">小怪兽出现！</h3>
+    <div class="boss" id="b-mon"></div>
+    <div class="hpwrap"><div class="hp" id="b-hp" style="width:100%"></div></div>
+    <div class="hit" id="b-hit">点击「攻击」赶跑它！</div>
+    <button class="btn-big" id="b-atk">🌟 攻击</button>
+  </div>
+</div>
+
+<!-- 奖励弹窗 -->
+<div class="overlay" id="ov-reward">
+  <div class="battle">
+    <div class="reward" id="r-ic"></div>
+    <div class="r-label" id="r-label">赶跑小怪兽！</div>
+    <div id="r-name" style="font-size:16px;font-weight:900;margin-top:4px"></div>
+    <div class="evo-flash" id="r-evo"></div>
+    <button class="btn-big" id="r-ok">收下阳光！🎉</button>
+  </div>
+</div>
+
+<!-- 同步弹窗 -->
+<div class="overlay" id="ov-sync">
+  <div class="modal">
+    <h3>🔄 存档同步</h3>
+    <p style="font-size:12.5px;color:var(--ink2);margin:0 0 8px;font-weight:700">方式一：导出存档（生成文本，到另一台设备粘贴导入）</p>
+    <button class="btn-p" id="gen-qr" style="width:100%">生成我的存档</button>
+    <div id="qr-box" style="display:none;text-align:center;margin-top:12px">
+      <textarea id="export-text" readonly style="height:80px"></textarea>
+      <button class="btn-g" id="copy-text" style="width:100%;margin-top:8px">📋 复制存档文本</button>
+    </div>
+    <hr style="border-color:var(--line);margin:16px 0">
+    <p style="font-size:12.5px;color:var(--ink2);margin:0 0 8px;font-weight:700">方式二：导入存档（粘贴对方文本）</p>
+    <textarea id="import-text" placeholder="在此粘贴存档文本…"></textarea>
+    <div class="row">
+      <button class="btn-g" id="close-sync">关闭</button>
+      <button class="btn-p" id="do-import">导入</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="ov-pwd">
+  <div class="modal" style="text-align:center">
+    <h3>🔒 家长验证</h3>
+    <p style="font-size:12.5px;color:var(--ink2);font-weight:700;margin:0 0 12px">请输入家长密码才能编辑目录</p>
+    <input id="pwd-input" type="password" inputmode="numeric" placeholder="默认 1234" style="width:100%;padding:12px;border:2px solid var(--line);border-radius:12px;font-size:16px;text-align:center;font-family:inherit">
+    <div id="pwd-err" style="color:#ff6b6b;font-size:12px;font-weight:700;min-height:18px;margin-top:6px"></div>
+    <div class="row">
+      <button class="btn-g" id="pwd-cancel">取消</button>
+      <button class="btn-p" id="pwd-ok">进入编辑</button>
+    </div>
+  </div>
+</div>
+
+<div class="install-tip" id="install-tip">
+  <span class="closex" id="install-close">✕</span>
+  <h4>📲 把农场放到手机桌面</h4>
+  <p>这样以后一点图标就能进来写作业啦！跟着做：</p>
+  <div class="step" id="install-step"></div>
+  <button class="okbtn" id="install-ok">我知道了，去添加</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== 可爱风 SVG 图标（植物大战僵尸风格） ===== */
+function svgSun(){return `<svg viewBox="0 0 24 24" width="100%" height="100%"><circle cx="12" cy="12" r="5" fill="#ffd23f" stroke="#f4a600" stroke-width="1.5"/><g stroke="#f4a600" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.6" y2="6.6"/><line x1="17.4" y1="17.4" x2="19.5" y2="19.5"/><line x1="19.5" y1="4.5" x2="17.4" y2="6.6"/><line x1="6.6" y1="17.4" x2="4.5" y2="19.5"/></g></svg>`;}
+// 小怪兽：圆胖绿怪
+function svgMon(c){return `<svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="30" rx="14" ry="8" fill="${c}" opacity=".35"/><path d="M8 22 Q8 8 20 8 Q32 8 32 22 Q32 34 20 34 Q8 34 8 22Z" fill="${c}" stroke="#3a2e1a" stroke-width="1.5"/><path d="M11 12 L9 6 M29 12 L31 6" stroke="${c}" stroke-width="3" stroke-linecap="round"/><circle cx="15" cy="20" r="3" fill="#fff"/><circle cx="25" cy="20" r="3" fill="#fff"/><circle cx="15" cy="21" r="1.5" fill="#222"/><circle cx="25" cy="21" r="1.5" fill="#222"/><path d="M14 27 Q20 31 26 27" stroke="#3a2e1a" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M13 16 l-4 2 M27 16 l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`;}
+// 植物（图鉴/进化用，可爱盆栽）
+function svgPlant(c,leaf){return `<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M16 44 h16 l-2 -10 h-12 z" fill="#caa472" stroke="#a9824f" stroke-width="1.5"/><rect x="17" y="32" width="14" height="4" rx="2" fill="#a9824f"/><circle cx="24" cy="20" r="9" fill="${c}" stroke="#3a2e1a" stroke-width="1.2"/><circle cx="24" cy="20" r="4" fill="${leaf}"/><circle cx="21" cy="18" r="1.4" fill="#3a2e1a"/><circle cx="27" cy="18" r="1.4" fill="#3a2e1a"/><path d="M22 23 q2 2 4 0" stroke="#3a2e1a" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>`;}
+// 高阶植物（大花）
+function svgEvoPlant(c){return `<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M16 44 h16 l-2 -10 h-12 z" fill="#caa472" stroke="#a9824f" stroke-width="1.5"/><rect x="17" y="32" width="14" height="4" rx="2" fill="#a9824f"/><g><circle cx="24" cy="16" r="6" fill="${c}" stroke="#3a2e1a" stroke-width="1.2"/><circle cx="14" cy="22" r="6" fill="${c}" stroke="#3a2e1a" stroke-width="1.2"/><circle cx="34" cy="22" r="6" fill="${c}" stroke="#3a2e1a" stroke-width="1.2"/><circle cx="24" cy="22" r="5" fill="#ffd23f" stroke="#f4a600" stroke-width="1.2"/></g></svg>`;}
+
+const MON_COLORS=["#ff9a3c","#ff6b6b","#7ed957","#5bc0eb","#c77dff","#ff7eb6","#ffb627","#4cc9a0"];
+
+/* ===== 数据：一年级作业目录（默认模板，家长可改） ===== */
+const SUN_PER_TASK = 10; // 每项完成获得的阳光（可改）
+const DEFAULT_SUBJECTS = [
+  {key:"yuwen", name:"语文", icon:"📖", tasks:[
+    {id:"yw1", name:"拼音练习"},
+    {id:"yw2", name:"生字抄写"},
+    {id:"yw3", name:"课文朗读"},
+    {id:"yw4", name:"古诗背诵"},
+    {id:"yw5", name:"看图写话"},
+  ]},
+  {key:"shuxue", name:"数学", icon:"🔢", tasks:[
+    {id:"sx1", name:"口算训练"},
+    {id:"sx2", name:"认识图形"},
+    {id:"sx3", name:"应用题"},
+    {id:"sx4", name:"钟表认识"},
+    {id:"sx5", name:"分类与比较"},
+  ]},
+  {key:"yingyu", name:"英语", icon:"🔤", tasks:[
+    {id:"yy1", name:"单词跟读"},
+    {id:"yy2", name:"儿歌吟唱"},
+    {id:"yy3", name:"字母书写"},
+  ]},
+  {key:"daka", name:"每日打卡", icon:"✅", tasks:[
+    {id:"dk1", name:"晨读 15 分钟"},
+    {id:"dk2", name:"围棋 1 局"},
+    {id:"dk3", name:"户外运动"},
+    {id:"dk4", name:"亲子阅读"},
+    {id:"dk5", name:"练字 10 分钟"},
+  ]},
+];
+const SUBJECT_ICONS = ["📖","🔢","🔤","✅","🎹","🏊","🎨","⚽","🎵","🧩","🌟","📝","💡","🔬","🏃"];
+
+/* 高阶植物（升级产物） */
+const EVO_PLANTS = [
+  {lv:2, ic:"🌳", name:"森林古树", need:50,  c:"#6fb83a", leaf:"#9ed16b"},
+  {lv:3, ic:"🌈", name:"彩虹神木", need:100, c:"#ff7eb6", leaf:"#ffd23f"},
+  {lv:4, ic:"🔥", name:"烈焰凤凰木", need:160, c:"#ff6b6b", leaf:"#ffb627"},
+  {lv:5, ic:"💎", name:"水晶世界树", need:230, c:"#5bc0eb", leaf:"#fff"},
+];
+
+/* ===== 状态 ===== */
+const STORE_KEY = "sun_farm_homework_v2";
+const EDIT_PWD = "1234"; // 家长编辑密码（可改）
+let state = load();
+
+function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
+function dateDiff(a,b){ // 返回 b-a 的天数
+  const da=new Date(a), db=new Date(b);
+  return Math.round((db-da)/86400000);
+}
+
+function load(){
+  try{
+    const s=JSON.parse(localStorage.getItem(STORE_KEY));
+    if(s && s.done !== undefined){
+      if(!s.subjects) s.subjects = clone(DEFAULT_SUBJECTS);
+      // 补全新字段
+      if(s.streak===undefined) s.streak=0;
+      if(!s.lastDay) s.lastDay=null;
+      if(!s.history) s.history={};
+      if(!s.totalDays) s.totalDays=0;
+      if(!s.pwdSet) s.pwdSet=false;
+      dailyReset(s); // 每天首次打开：重置当天作业，但保留历史
+      return s;
+    }
+  }catch(e){}
+  return {done:{}, plants:[], evo:[], subjects:clone(DEFAULT_SUBJECTS), streak:0, lastDay:null, history:{}, totalDays:0, pwdSet:false};
+}
+
+// 每日重置：把当天作业标记清掉，让孩子重新打；历史/连续天数保留
+function dailyReset(s){
+  const t=todayStr();
+  if(s.lastDay===t) return; // 今天已经重置过了
+  // 计算"上次打开日"是几天前
+  let gap = s.lastDay ? dateDiff(s.lastDay, t) : 999;
+  const lastDone = s.history[s.lastDay] && s.history[s.lastDay].done>0;
+  if(s.lastDay && gap===1 && lastDone){
+    s.streak = (s.streak||0)+1;          // 连续：昨天打过 + 今天接着
+  }else{
+    s.streak = 0;                         // 断卡或首次
+  }
+  // 重置当天作业（历史/累计植物保留）
+  s.done = {};
+  // 记录新的一天
+  s.lastDay = t;
+  s.history[t] = {done:0, sun:0};
+  s.totalDays = (s.totalDays||0)+1;
+  // 注意：plants/evo（累计收集）保留不清零
+}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function getSubjects(){ return state.subjects && state.subjects.length ? state.subjects : DEFAULT_SUBJECTS; }
+function save(){ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+function genId(){ return "t"+Date.now().toString(36)+Math.floor(Math.random()*999); }
+
+/* ===== 工具 ===== */
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),1600);}
+function allTasks(){return getSubjects().flatMap(s=>s.tasks.map(t=>({...t,subj:s.name})));}
+function doneCount(){return Object.values(state.done).filter(Boolean).length;}
+function sunCount(){return doneCount()*SUN_PER_TASK;}
+function plantCount(){return state.plants.length;}
+function forestLevel(){let total=state.plants.length+state.evo.length;return Math.max(1,Math.floor(total/3)+1);}
+
+/* ===== 音效（WebAudio 合成，无需文件） ===== */
+let actx=null;
+function ac(){ if(!actx){ try{ actx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return actx; }
+function beep(freq, dur, type="square", vol=0.15, when=0){
+  const c=ac(); if(!c) return;
+  const o=c.createOscillator(), g=c.createGain();
+  o.type=type; o.frequency.value=freq;
+  o.connect(g); g.connect(c.destination);
+  const t=c.currentTime+when;
+  g.gain.setValueAtTime(vol, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+  o.start(t); o.stop(t+dur);
+}
+function sfxHit(){ beep(220+Math.random()*60, 0.08, "square", 0.12); }
+function sfxWin(){ // 上行小旋律
+  beep(523,0.12,"triangle",0.18,0); beep(659,0.12,"triangle",0.18,0.1); beep(784,0.16,"triangle",0.18,0.2);
+}
+function sfxSun(){ beep(880,0.1,"sine",0.15,0); beep(1175,0.12,"sine",0.15,0.08); }
+function sfxEvo(){ beep(659,0.14,"triangle",0.2,0); beep(880,0.14,"triangle",0.2,0.13); beep(1047,0.2,"triangle",0.2,0.26); }
+function sfxClick(){ beep(440,0.05,"sine",0.1); }
+// 首次交互时解锁音频
+document.addEventListener("pointerdown", ()=>{ const c=ac(); if(c&&c.state==="suspended") c.resume(); }, {once:true});
+
+/* ===== 渲染 ===== */
+function renderHUD(){
+  document.getElementById("s-beat").textContent=doneCount();
+  document.getElementById("s-sun").textContent=sunCount();
+  document.getElementById("s-lv").textContent=forestLevel();
+  document.getElementById("s-streak").textContent=state.streak||0;
+}
+
+let EDIT_MODE=false;
+
+function renderHome(){
+  const el=document.getElementById("tab-home");
+  const subs=getSubjects();
+  let html = EDIT_MODE ? `<div class="edit-hint">✏️ 家长编辑模式：点事项框可改名，🗑️ 删除，下方按钮可加科目/事项</div>` : ``;
+  html+=`<div class="board">`;
+  html+=`<div class="row head"><div class="cell">📋 要做的事项</div><div class="cell col-mon">👾 剩余怪兽</div><div class="cell col-sun">🌞 阳光</div></div>`;
+  subs.forEach((s,si)=>{
+    const total=s.tasks.length;
+    const done=s.tasks.filter(t=>state.done[t.id]).length;
+    const left=total-done;
+    // 第1列
+    let items=`<div class="items">`;
+    s.tasks.forEach(t=>{
+      const d=state.done[t.id];
+      if(EDIT_MODE){
+        items+=`<div class="item edit" data-s="${si}" data-t="${t.id}">
+          <input class="nm-input" data-s="${si}" data-t="${t.id}" value="${escapeAttr(t.name)}" maxlength="20">
+          <button class="mini-del" data-act="deltask" data-s="${si}" data-t="${t.id}" title="删除">🗑️</button>
+        </div>`;
+      }else{
+        items+=`<div class="item ${d?'done':''}" data-id="${t.id}"><span class="chk">${d?'✓':''}</span><span class="nm">${t.name}</span></div>`;
+      }
+    });
+    items+=`</div>`;
+    if(EDIT_MODE){
+      items+=`<button class="add-btn" data-act="addtask" data-s="${si}">＋ 添加事项</button>`;
+    }
+    // 第2列 怪兽（显示剩余数量 + 小怪兽头像）
+    let mons=`<div class="mon-row">`;
+    for(let i=0;i<left;i++){mons+=`<div class="mon left">${svgMon(MON_COLORS[(si+i)%MON_COLORS.length])}</div>`;}
+    mons+=`</div>`;
+    const monTxt = left>0 ? `还剩 <b>${left}</b> 只` : `全部赶跑！✅`;
+    // 第3列 阳光
+    const subjSun=done*SUN_PER_TASK;
+    const pct=total? Math.round(done/total*100):0;
+    // 编辑模式下科目名也可改 + 删除科目
+    const subjHead = EDIT_MODE
+      ? `<div class="subj"><input class="subj-input" data-s="${si}" value="${escapeAttr(s.name)}" maxlength="10"><button class="mini-del" data-act="delsubj" data-s="${si}" title="删除科目">🗑️</button></div>`
+      : `<div class="subj">${s.icon} ${s.name} <span class="badge">${done}/${total}</span></div>`;
+    html+=`<div class="row">
+      <div class="cell col-task">${subjHead}${items}</div>
+      <div class="cell col-mon">${mons}<div class="mon-left-txt">${monTxt}</div></div>
+      <div class="cell col-sun"><div class="sun-num">${svgSun()}${subjSun}</div><div class="sun-bar"><i style="width:${pct}%"></i></div></div>
+    </div>`;
+  });
+  html+=`</div>`;
+  if(EDIT_MODE){
+    html+=`<button class="add-btn big" data-act="addsubj" style="margin-top:14px;width:100%">＋ 添加新科目</button>`;
+    html+=`<button class="reset-default" id="reset-default">↺ 恢复默认一年级目录</button>`;
+  }
+  el.innerHTML=html;
+
+  if(EDIT_MODE){
+    // 编辑模式：输入框改名、按钮增删
+    el.querySelectorAll(".nm-input,.subj-input").forEach(inp=>{
+      inp.oninput=()=>{
+        const si=+inp.dataset.s;
+        if(inp.classList.contains("subj-input")){ getSubjects()[si].name=inp.value; }
+        else { const tid=inp.dataset.t; const tk=getSubjects()[si].tasks.find(x=>x.id===tid); if(tk) tk.name=inp.value; }
+        save();
+      };
+    });
+    el.querySelectorAll("[data-act]").forEach(btn=>{
+      btn.onclick=()=>handleEdit(btn.dataset.act, +btn.dataset.s, btn.dataset.t);
+    });
+    const rd=document.getElementById("reset-default");
+    if(rd) rd.onclick=resetDefault;
+  }else{
+    el.querySelectorAll(".item").forEach(c=>c.onclick=()=>openBattle(c.dataset.id));
+  }
+}
+
+function escapeAttr(s){return String(s).replace(/"/g,"&quot;").replace(/</g,"&lt;");}
+
+function handleEdit(act, si, tid){
+  const subs=getSubjects();
+  if(act==="addtask"){
+    subs[si].tasks.push({id:genId(), name:"新事项"});
+    save(); renderHome(); toast("已添加事项，记得改名");
+  }else if(act==="deltask"){
+    const tk=subs[si].tasks.find(x=>x.id===tid);
+    if(tk && state.done[tk.id]){ if(!confirm("这项已经完成，删除会扣回阳光，确定？")) return; delete state.done[tk.id]; }
+    subs[si].tasks=subs[si].tasks.filter(x=>x.id!==tid);
+    save(); renderHome(); toast("已删除事项");
+  }else if(act==="addsubj"){
+    subs.push({key:genId(), name:"新科目", icon:SUBJECT_ICONS[subs.length%SUBJECT_ICONS.length], tasks:[{id:genId(), name:"新事项"}]});
+    save(); renderHome(); toast("已添加科目");
+  }else if(act==="delsubj"){
+    const cnt=subs[si].tasks.filter(t=>state.done[t.id]).length;
+    if(cnt>0 && !confirm("该科目有已完成项，删除会扣回阳光，确定？")) return;
+    subs[si].tasks.forEach(t=>delete state.done[t.id]);
+    subs.splice(si,1);
+    save(); renderHome(); toast("已删除科目");
+  }
+}
+
+function resetDefault(){
+  if(!confirm("恢复为默认一年级目录？你自定义的科目和事项会被覆盖，但已完成进度保留。")) return;
+  state.subjects=clone(DEFAULT_SUBJECTS);
+  save(); renderHome(); toast("已恢复默认目录");
+}
+
+function toggleEdit(){
+  if(EDIT_MODE){ // 退出编辑
+    EDIT_MODE=false;
+    document.getElementById("btn-edit").textContent="✏️ 家长编辑";
+    document.getElementById("btn-edit").classList.remove("on");
+    renderAll(); return;
+  }
+  // 进入编辑：要求密码
+  const pw=document.getElementById("pwd-input").value.trim();
+  if(pw===EDIT_PWD){
+    EDIT_MODE=true;
+    document.getElementById("btn-edit").textContent="✅ 完成编辑";
+    document.getElementById("btn-edit").classList.add("on");
+    document.getElementById("ov-pwd").classList.remove("show");
+    document.getElementById("pwd-input").value="";
+    renderAll();
+  }else{
+    document.getElementById("pwd-err").textContent = pw? "密码不对，试试 1234" : "请输入家长密码（默认 1234）";
+  }
+}
+
+function renderGarden(){
+  const el=document.getElementById("tab-garden");
+  if(state.plants.length===0){el.innerHTML=`<div class="empty">🌱 还没有植物～去「作业农场」赶跑怪兽，就能种下第一棵！</div>`;return;}
+  let html=`<div class="section-title" style="font-weight:900;font-size:16px;margin:12px 4px">🌱 我的植物图鉴 <small style="color:var(--ink2);font-weight:700">(${state.plants.length} 棵)</small></div><div class="garden">`;
+  state.plants.forEach(p=>{html+=`<div class="plant"><div class="ic">${p.svg}</div><div class="pn">${p.name}</div></div>`;});
+  html+=`</div>`;
+  if(state.evo.length){
+    html+=`<div class="section-title" style="font-weight:900;font-size:16px;margin:18px 4px 4px">✨ 进化植物 <small style="color:var(--ink2);font-weight:700">(${state.evo.length} 棵)</small></div><div class="garden">`;
+    state.evo.forEach(e=>{html+=`<div class="plant evo"><div class="ic">${e.svg}</div><div class="pn">${e.name}</div></div>`;});
+    html+=`</div>`;
+  }
+  el.innerHTML=html;
+}
+
+function renderEvo(){
+  const el=document.getElementById("tab-evo");
+  let html=`<div style="font-weight:700;color:var(--ink2);margin:6px 4px 4px">收集阳光越多，农场越高级！阳光达到数量即可种出更高阶植物～</div>`;
+  html+=`<div class="evo-track"><div class="node"><b>🌞</b>阳光</div>`;
+  EVO_PLANTS.forEach(e=>{const got=state.evo.some(x=>x.lv===e.lv);html+=`<div class="arrow">➜</div><div class="node"><b>${got?svgEvoPlant(e.c):'❔'}</b>${e.need}阳光${got?'✔':''}</div>`;});
+  html+=`</div>`;
+  html+=`<div class="garden">`;
+  EVO_PLANTS.forEach(e=>{
+    const got=state.evo.some(x=>x.lv===e.lv);
+    const reach=sunCount()>=e.need;
+    html+=`<div class="plant ${got?'evo':''}" style="${reach&&!got?'border-color:var(--sun-d)':''}">
+      <div class="ic" style="${!reach?'opacity:.4':''}">${got||reach?svgEvoPlant(e.c):'❔'}</div>
+      <div class="pn">${e.name}</div>
+      <div class="pn" style="color:var(--ink2);font-weight:700;font-size:11px">需 ${e.need} 阳光</div>
+      <div class="pn" style="color:${reach?'var(--grass-d)':'var(--ink2)'};font-weight:800;font-size:11px">${got?'已进化':(reach?'可进化 ✦':'未达成')}</div>
+    </div>`;
+  });
+  html+=`</div>`;
+  el.innerHTML=html;
+}
+
+function renderAll(){renderHUD();renderHome();renderGarden();renderEvo();}
+
+/* ===== 战斗 ===== */
+let curTask=null,hp=100;
+function openBattle(id){
+  const t=allTasks().find(x=>x.id===id);if(!t)return;
+  if(state.done[id]){toast("这只怪兽已经被赶跑啦！");return;}
+  curTask=t;hp=100;
+  document.getElementById("b-title").textContent=`${t.subj}·${t.name} 的小怪兽！`;
+  document.getElementById("b-mon").innerHTML=svgMon(MON_COLORS[0]);
+  document.getElementById("b-hp").style.width="100%";
+  document.getElementById("b-hit").textContent="点击「攻击」赶跑它！";
+  document.getElementById("b-atk").disabled=false;
+  document.getElementById("ov-battle").classList.add("show");
+}
+document.getElementById("b-atk").onclick=()=>{
+  if(!curTask)return;
+  const dmg=20+Math.floor(Math.random()*16);hp=Math.max(0,hp-dmg);
+  document.getElementById("b-hp").style.width=hp+"%";
+  sfxHit();
+  const hits=["💥 命中！","⚡ 暴击！","🌟 漂亮！","🔥 烧跑它！"];
+  document.getElementById("b-hit").textContent=hits[Math.floor(Math.random()*hits.length)]+" -"+dmg;
+  if(hp<=0){document.getElementById("b-atk").disabled=true;setTimeout(winBattle,500);}
+};
+function winBattle(){
+  document.getElementById("ov-battle").classList.remove("show");
+  sfxWin(); sfxSun();
+  state.done[curTask.id]=true;
+  // 记录今天完成情况到历史（用于连续打卡判断）
+  const t=todayStr();
+  if(!state.history[t]) state.history[t]={done:0,sun:0};
+  state.history[t].done = doneCount();
+  state.history[t].sun = sunCount();
+  // 种植物（可爱盆栽），颜色按科目变化
+  const colors=["#7ed957","#5bc0eb","#ff7eb6","#ffb627","#c77dff"];
+  const idx=getSubjects().findIndex(s=>s.tasks.some(t=>t.id===curTask.id));
+  const c=colors[idx%colors.length];
+  state.plants.push({svg:svgPlant(c,"#9ed16b"),name:curTask.name});
+  const evoList=checkEvo();
+  save();showReward(curTask,evoList);renderAll();
+}
+function checkEvo(){
+  const res=[];
+  for(const e of EVO_PLANTS){
+    if(sunCount()>=e.need && !state.evo.some(x=>x.lv===e.lv)){
+      state.evo.push({lv:e.lv,svg:svgEvoPlant(e.c),name:e.name});
+      res.push(e);
+    }
+  }
+  return res;
+}
+function showReward(task,evoList){
+  document.getElementById("r-ic").innerHTML=svgSun();
+  document.getElementById("r-label").textContent=`赶跑 ${task.subj}·${task.name} 怪兽！`;
+  document.getElementById("r-name").textContent=`🌟 获得 ${SUN_PER_TASK} 阳光！种下植物：${task.name}`;
+  const evo=document.getElementById("r-evo");
+  evo.innerHTML=evoList.length?"✨ 农场升级！进化出："+evoList.map(e=>`${e.name}`).join("、"):"";
+  if(evoList.length) sfxEvo();
+  document.getElementById("ov-reward").classList.add("show");
+}
+document.getElementById("r-ok").onclick=()=>document.getElementById("ov-reward").classList.remove("show");
+document.getElementById("pwd-ok").onclick=toggleEdit;
+document.getElementById("pwd-cancel").onclick=()=>document.getElementById("ov-pwd").classList.remove("show");
+document.getElementById("pwd-input").addEventListener("keydown",e=>{ if(e.key==="Enter") toggleEdit(); });
+
+/* ===== 标签 ===== */
+document.querySelectorAll("#nav button").forEach(b=>{
+  if(b.id==="btn-edit"){ b.onclick=()=>{ document.getElementById("pwd-input").value=""; document.getElementById("pwd-err").textContent=""; document.getElementById("ov-pwd").classList.add("show"); document.getElementById("pwd-input").focus(); }; return; }
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    const tab=b.dataset.tab;
+    document.getElementById("tab-home").style.display=tab==="home"?"block":"none";
+    document.getElementById("tab-garden").style.display=tab==="garden"?"block":"none";
+    document.getElementById("tab-evo").style.display=tab==="evo"?"block":"none";
+    if(tab==="garden")renderGarden();
+    if(tab==="evo")renderEvo();
+  };
+});
+
+/* ===== 重置 ===== */
+document.getElementById("btn-reset").onclick=()=>{
+  if(confirm("确定清空所有进度吗？怪兽会复活，阳光和植物都会消失哦！")){state={done:{},plants:[],evo:[]};save();renderAll();toast("进度已重置");}
+};
+
+/* ===== 同步 ===== */
+document.getElementById("btn-sync").onclick=()=>{document.getElementById("qr-box").style.display="none";document.getElementById("ov-sync").classList.add("show");};
+document.getElementById("close-sync").onclick=()=>document.getElementById("ov-sync").classList.remove("show");
+let lastExport="";
+document.getElementById("gen-qr").onclick=()=>{
+  lastExport=btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+  document.getElementById("export-text").value=lastExport;
+  document.getElementById("qr-box").style.display="block";
+};
+document.getElementById("copy-text").onclick=()=>{
+  const txt=lastExport;
+  navigator.clipboard?.writeText(txt).then(()=>toast("已复制存档文本")).catch(()=>{const ta=document.getElementById("export-text");ta.select();document.execCommand("copy");toast("已复制");});
+};
+document.getElementById("do-import").onclick=()=>{
+  const txt=document.getElementById("import-text").value.trim();
+  if(!txt){toast("请先粘贴存档文本");return;}
+  try{
+    const s=JSON.parse(decodeURIComponent(escape(atob(txt))));
+    if(s&&s.done){if(!confirm("导入将覆盖当前进度，确定吗？"))return;state=s;save();renderAll();document.getElementById("ov-sync").classList.remove("show");toast("存档导入成功！");}
+    else toast("存档格式不正确");
+  }catch(e){toast("存档解析失败");}
+};
+
+renderAll();
+
+/* ===== 安装引导：首次打开提示添加到主屏幕 ===== */
+(function(){
+  const TIP_KEY="sf_tip_seen";
+  if(localStorage.getItem(TIP_KEY)) return;
+  const ua=navigator.userAgent;
+  const isIOS=/iPhone|iPad|iPod/i.test(ua);
+  const isAndroid=/Android/i.test(ua);
+  const stepEl=document.getElementById("install-step");
+  if(isIOS){
+    stepEl.innerHTML=`① 用 <b>Safari</b> 打开本页<br>② 点底部 <b>分享按钮 ↑</b><br>③ 选 <b>"添加到主屏幕"</b><br>④ 点"添加"完成`;
+  }else if(isAndroid){
+    stepEl.innerHTML=`① 用 <b>Chrome</b> 打开本页<br>② 点右上角 <b>⋮ 三个点</b><br>③ 选 <b>"添加到主屏幕"</b><br>④ 点"添加"完成`;
+  }else{
+    stepEl.innerHTML=`① 手机浏览器打开本页<br>② 点菜单里的 <b>"添加到主屏幕"</b><br>③ 桌面就出现阳光农场图标啦`;
+  }
+  const tip=document.getElementById("install-tip");
+  setTimeout(()=>tip.classList.add("show"),900);
+  function close(){tip.classList.remove("show");localStorage.setItem(TIP_KEY,"1");}
+  document.getElementById("install-ok").onclick=close;
+  document.getElementById("install-close").onclick=close;
+})();
+
+/* ===== PWA：注册 Service Worker，支持"添加到主屏幕" ===== */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
