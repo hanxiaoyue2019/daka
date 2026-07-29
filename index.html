@@ -455,7 +455,7 @@ function renderHome(){
     items+=`</div>`;
     if(EDIT_MODE){
       items+=`<button class="add-btn" data-act="addtask" data-s="${si}">＋ 添加事项</button>`;
-      items+=`<button class="add-btn voice-btn" data-voice="${si}">🎤 说一句加作业</button>`;
+      items+=`<button class="add-btn voice-btn" data-voice="${si}">🎤 按住说话加作业</button>`;
     }
     // 第2列 怪兽（显示剩余数量 + 小怪兽头像）
     let mons=`<div class="mon-row">`;
@@ -496,7 +496,12 @@ function renderHome(){
       btn.onclick=()=>handleEdit(btn.dataset.act, +btn.dataset.s, btn.dataset.t);
     });
     el.querySelectorAll("[data-voice]").forEach(btn=>{
-      btn.onclick=()=>startVoice(+btn.dataset.voice, btn);
+      const si=+btn.dataset.voice;
+      btn._pd=false;
+      btn.onpointerdown=(ev)=>{ ev.preventDefault(); btn._pd=true; startVoice(si, btn); };
+      btn.onpointerup=()=>{ if(voiceListening) try{voiceRec.stop();}catch(e){} };
+      btn.onpointerleave=()=>{ if(voiceListening) try{voiceRec.stop();}catch(e){} };
+      btn.onclick=(ev)=>{ ev.preventDefault(); if(btn._pd){ btn._pd=false; return; } startVoice(si, btn); };
     });
     const rd=document.getElementById("reset-default");
     if(rd) rd.onclick=resetDefault;
@@ -542,38 +547,52 @@ function resetDefault(){
 /* ===== 语音录入作业 ===== */
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 let voiceRec = null;
+let voiceListening = false;
+let voiceSi = 0;
+let voiceBtn = null;
 if(!SR){ document.body.classList.add("no-voice"); }
 else {
   voiceRec = new SR();
   voiceRec.lang = "zh-CN";
   voiceRec.interimResults = false;
   voiceRec.maxAlternatives = 1;
+  voiceRec.continuous = false;
+  voiceRec.onresult = (e)=>{
+    let text="";
+    for(let i=0;i<e.results.length;i++){ text += e.results[i][0].transcript; }
+    text=text.trim();
+    if(text) handleEdit("voicetask", voiceSi, text);
+    else toast("没听清，请再试一次");
+  };
+  voiceRec.onerror = (e)=>{
+    if(e.error==="no-speech"){ toast("没听到声音，请再说一次"); }
+    else if(e.error!=="aborted"){ toast("语音识别失败：" + e.error); }
+  };
+  voiceRec.onend = ()=>{
+    voiceListening = false;
+    if(voiceBtn){
+      voiceBtn.classList.remove("listening");
+      voiceBtn.textContent = "🎤 按住说话加作业";
+    }
+  };
 }
 function startVoice(si, btn){
   if(!SR){ toast("当前浏览器不支持语音，请用安卓Chrome或手动添加"); return; }
-  if(voiceRec._on){ // 正在听，停止
-    voiceRec.stop();
+  if(voiceListening){ // 正在听 -> 手动停止
+    try{ voiceRec.stop(); }catch(e){}
     return;
   }
-  try{ voiceRec.start(); }catch(e){ try{voiceRec.start();}catch(e2){toast("语音启动失败，请重试");return;} }
+  voiceSi = si; voiceBtn = btn;
+  try{ voiceRec.start(); }
+  catch(e){
+    // 已在运行，忽略；否则提示
+    if(e && e.message && e.message.indexOf("already started")>=0){ return; }
+    toast("语音启动失败，请重试"); return;
+  }
+  voiceListening = true;
   btn.classList.add("listening");
-  btn.textContent = "🎤 正在听…（再点停止）";
-  toast("请说出作业名称");
-  voiceRec.onresult = (e)=>{
-    const text = e.results[0][0].transcript.trim();
-    handleEdit("voicetask", si, text);
-  };
-  voiceRec.onerror = (e)=>{
-    btn.classList.remove("listening");
-    btn.textContent = "🎤 说一句加作业";
-    if(e.error!=="no-speech" && e.error!=="aborted") toast("语音识别失败：" + e.error);
-  };
-  voiceRec.onend = ()=>{
-    voiceRec._on = false;
-    btn.classList.remove("listening");
-    btn.textContent = "🎤 说一句加作业";
-  };
-  voiceRec._on = true;
+  btn.textContent = "🎤 正在听…（松开停止）";
+  toast("按住说话，说完松开自动添加");
 }
 
 function toggleEdit(){
